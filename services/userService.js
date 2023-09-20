@@ -31,7 +31,7 @@ const createUser = async (name,email,phone,password)=>{
     }
 }
 
-const updateUser = async(name,email,phone,password)=>{
+const updateUser = async(id,name,email,phone,password)=>{
     try {
         let updateUser = await db.User.update({
             name,email,phone,password
