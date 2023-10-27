@@ -3,6 +3,7 @@ const app = express(); // Instancia del framework Express
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const {pg}   = require('pg')
+const cors = require('cors')
 
 // Validamos que no estemos en ambiente de producción
 if(process.env.NODE_ENV != 'production'){
@@ -16,6 +17,7 @@ app.set('port', process.env.PORT || 4000) //
 app.use(bodyParser.urlencoded({extended:false}))// Recibir datos formulario sencillos
 app.use(bodyParser.json()) // Para recibir json
 app.use(morgan('combined'))
+app.use(cors())
 
 app.use('/api/v1/users',require('./api/v1/routes/users.routes'))
 app.use('/api/v1/articles',require('./api/v1/routes/articles.routes'))
